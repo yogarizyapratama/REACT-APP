@@ -14,17 +14,18 @@ import ErrorPopup from './components/ErrorPopUp'
 import GlobalLoading from './components/GlobalLoading'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setTokenExpired, logout } from './redux/slices/auth';
+import { setTokenExpired, logout, setUser } from './redux/slices/auth';
 import { toast } from 'react-toastify';
 
 function App() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
-
+  
   useEffect(() => {
     const checkTokenExpiration = () => {
       if (token) {
         const decodedToken = jwtDecode(token);
+        dispatch(setUser(decodedToken))
         const currentTime = Date.now() / 1000;
 
         if (decodedToken.exp < currentTime) {

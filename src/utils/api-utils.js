@@ -1,7 +1,7 @@
 // src/utils/apiClient.js
 import { jwtDecode } from "jwt-decode";
 import store from "../redux/store";
-import { setTokenExpired, setApiError, logout } from "../redux/slices/auth";
+import { setTokenExpired, setApiError, logout, setUser } from "../redux/slices/auth";
 import { setLoading, clearLoading } from '../redux/slices/loading';
 import { toast } from "react-toastify";
 
